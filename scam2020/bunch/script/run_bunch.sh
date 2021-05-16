@@ -9,7 +9,7 @@ function run_bunch {
     for idx in "${!GRAPH_FILES[@]}"; do
         mdg_name=${GRAPH_FILES[$idx]%.*}
         echo "${idx} > MDG NAME: ${mdg_name}"
-        /usr/bin/time -v -o ${LOG_PATH}/${EXPERIMENT_NAME}/${mdg_name}.out java -cp ${BASE_PATH}/.:Bunch-3.5.jar BunchAPITest ${GRAPHS_PATH}/${GRAPH_FILES[$idx]} ${EXP_PATH}/${EXPERIMENT_NAME}/${mdg_size}
+        /usr/bin/time -v -o ${LOG_PATH}/${EXPERIMENT_NAME}/${mdg_name}.out timeout 2h java -cp ${BASE_PATH}/.:Bunch-3.5.jar BunchAPITest ${GRAPHS_PATH}/${GRAPH_FILES[$idx]} ${EXP_PATH}/${EXPERIMENT_NAME}/${mdg_size}
     done
 }
 

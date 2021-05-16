@@ -9,7 +9,7 @@ function run_hd_mono {
     for idx in "${!GRAPH_FILES[@]}"; do
         mdg_name=${GRAPH_FILES[$idx]%.*}
         echo "${idx} > MDG NAME: ${mdg_name}"
-        /usr/bin/time -v -o ${LOG_PATH}/${EXPERIMENT_NAME}/${mdg_name}.out java -jar ${BASE_PATH}/cms_runner/target/cms_runner-1.0-SNAPSHOT-jar-with-dependencies.jar --algorithm LNS --input-file ${GRAPHS_PATH}/${GRAPH_FILES[$idx]} --output ${EXP_PATH}/${EXPERIMENT_NAME}/${mdg_size}.txt --repetitions 1
+        /usr/bin/time -v -o ${LOG_PATH}/${EXPERIMENT_NAME}/${mdg_name}.out timeout 2h java -jar ${BASE_PATH}/cms_runner/target/cms_runner-1.0-SNAPSHOT-jar-with-dependencies.jar --algorithm LNS --input-file ${GRAPHS_PATH}/${GRAPH_FILES[$idx]} --output ${EXP_PATH}/${EXPERIMENT_NAME}/${mdg_size}.txt --repetitions 1
     done
 }
 
